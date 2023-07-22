@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Blogs from './Blogs.js'
 
 export const metadata: Metadata = {
   title: 'Elisha Blogs',
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <h1 className="font-quicksand text-xl text-[#f1356d] mr-auto">Blogs:</h1>
+    <div>
+      <h1 className="font-quicksand text-xl text-[#f1356d] mr-auto">Blogs:</h1>
+      <Blogs></Blogs>
+    </div>
   )
 }
