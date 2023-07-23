@@ -1,9 +1,14 @@
-'use client'
+"use client";
 
-import './globals.css'
-import NavBar from './NavBar'
+import React from "react";
+import "./globals.css";
+import NavBar from "./NavBar";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html>
       <body className="flex flex-col">
