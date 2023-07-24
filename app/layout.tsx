@@ -13,9 +13,7 @@ export default function RootLayout({
     <html>
       <body className="flex flex-col">
         <NavBar></NavBar>
-        <div className="flex items-center my-10 mx-auto max-w-4xl ">
-          {children}
-        </div>
+        <div className="flex justify-center my-10">{children}</div>
       </body>
     </html>
   );

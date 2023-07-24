@@ -14,18 +14,16 @@ const _TITLES = [
   "f title",
 ];
 
-export default function Blogs() {
+function Blogs() {
   return (
-    <div>
+    <div className="flex flex-col">
       {Array.from({ length: _AUTHORS.length }).map((_, i) => {
         return (
-          <Blog
-            title={_TITLES[i]}
-            author={_AUTHORS[i]}
-            content={_CONTENT}
-          ></Blog>
+          <Blog key={_TITLES[i]} title={_TITLES[i]} author={_AUTHORS[i]}></Blog>
         );
       })}
     </div>
   );
 }
+
+export default Blogs;

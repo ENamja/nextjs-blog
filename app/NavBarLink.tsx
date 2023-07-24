@@ -1,9 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { Path } from "typescript";
 
-function NavBarLink({ href, title }: { href: string; title: String }) {
+interface NavBarLinkProps {
+  href: string;
+  title: string;
+}
+
+function NavBarLink({ href, title }: NavBarLinkProps) {
   return (
     <Link
       href={href}
