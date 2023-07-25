@@ -17,7 +17,7 @@ function Blog({ title, author }: BlogProps) {
       <span className="text-[#f1356d] font-quicksand font-bold text-lg">
         {title}
       </span>
-      <span className="text-black font-sans-serif font-light">
+      <span className="text-black font-quicksand font-light">
         Written by: {author}
       </span>
     </Button>

@@ -11,7 +11,7 @@ function NavBarLink({ href, title }: NavBarLinkProps) {
   return (
     <Link
       href={href}
-      className="font-sans-serif font-light ml-10 text-lg hover:text-[#f5739a] transition-colors"
+      className="font-quicksand font-light ml-10 text-lg hover:text-[#f5739a] transition-colors"
     >
       {title}
     </Link>

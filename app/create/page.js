@@ -1,5 +1,11 @@
-export default function Create() {
+"use client"
+
+import Submission from './Submission'
+
+function Create() {
     return (
-        <h1>Create blog</h1>
-    )
+        <Submission></Submission>
+    );
 };
+
+export default Create;

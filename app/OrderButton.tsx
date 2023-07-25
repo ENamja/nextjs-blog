@@ -11,8 +11,10 @@ interface OrderButtonProps {
 function OrderButton({ aToZ, setAToZ }: OrderButtonProps) {
   return (
     <Button
+      className="font-quicksand"
       variant="text"
       color="gray"
+      ripple={true}
       onClick={() => {
         setAToZ(!aToZ);
       }}
