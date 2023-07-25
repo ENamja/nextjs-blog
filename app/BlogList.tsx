@@ -13,7 +13,7 @@ function BlogList() {
         <h1 className="font-quicksand font-bold text-xl">Blogs:</h1>
         <OrderButton aToZ={aToZ} setAToZ={setAToZ}></OrderButton>
       </div>
-      <Blogs></Blogs>
+      <Blogs aToZ={aToZ}></Blogs>
     </div>
   );
 }

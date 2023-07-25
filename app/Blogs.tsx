@@ -14,12 +14,32 @@ const _TITLES = [
   "f title",
 ];
 
-function Blogs() {
+function Blogs({ aToZ }: { aToZ: boolean }) {
+  const _BLOGS = Array.from({ length: _AUTHORS.length }).map((_, i) => {
+    return { title: _TITLES[i], author: _AUTHORS[i], content: _CONTENT };
+  });
+
+  _BLOGS.sort((a, b) => {
+    let aTitle = a.title;
+    let bTitle = b.title;
+
+    if (aTitle < bTitle) {
+      return aToZ ? -1 : 1;
+    } else if (aTitle > bTitle) {
+      return aToZ ? 1 : -1;
+    }
+    return 0;
+  });
+
   return (
     <div className="flex flex-col">
-      {Array.from({ length: _AUTHORS.length }).map((_, i) => {
+      {Array.from({ length: _BLOGS.length }).map((_, i) => {
         return (
-          <Blog key={_TITLES[i]} title={_TITLES[i]} author={_AUTHORS[i]}></Blog>
+          <Blog
+            key={_BLOGS[i].title}
+            title={_BLOGS[i].title}
+            author={_BLOGS[i].author}
+          ></Blog>
         );
       })}
     </div>

@@ -12,6 +12,7 @@ function OrderButton({ aToZ, setAToZ }: OrderButtonProps) {
   return (
     <Button
       variant="text"
+      color="gray"
       onClick={() => {
         setAToZ(!aToZ);
       }}
