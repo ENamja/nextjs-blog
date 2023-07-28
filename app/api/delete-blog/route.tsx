@@ -12,7 +12,14 @@ export async function GET(request: Request) {
     }
     await sql`DELETE FROM Blogs WHERE author = ${author} AND title = ${title};`;
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    } else {
+      return NextResponse.json(
+        { error: "error is not type Error" },
+        { status: 500 }
+      );
+    }
   }
 
   const blogs = await sql`SELECT * FROM Blogs;`;

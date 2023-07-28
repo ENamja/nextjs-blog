@@ -1,6 +1,5 @@
-import { sql } from "@vercel/postgres";
 import { db } from "@/lib/schema";
-import { BlogTable } from "@/lib/schema";
+import { blogTable } from "@/lib/schema";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -13,12 +12,19 @@ export async function GET(request: Request) {
     if (!author || !title || !content)
       throw new Error("title, author, and content required");
     await db
-      .insert(BlogTable)
+      .insert(blogTable)
       .values({ author: author, title: title, content: content });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    } else {
+      return NextResponse.json(
+        { error: "error is not type Error" },
+        { status: 500 }
+      );
+    }
   }
 
-  const blogs = await db.select().from(BlogTable);
+  const blogs = await db.select().from(blogTable);
   return NextResponse.json({ blogs }, { status: 200 });
 }
