@@ -1,16 +1,19 @@
-import { sql } from "@vercel/postgres";
+import { db } from "@/lib/schema";
+import { blogTable } from "@/lib/schema";
+import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const author = searchParams.get("author");
-  const title = searchParams.get("title");
+  const id = searchParams.get("id");
 
   try {
-    if (!author || !title) {
-      throw new Error("author and title required");
+    if (!id) {
+      throw new Error("id required");
+    } else if (Number.isNaN(Number(id))) {
+      throw new Error("id must be integer");
     }
-    await sql`DELETE FROM Blogs WHERE author = ${author} AND title = ${title};`;
+    await db.delete(blogTable).where(eq(blogTable.id, Number(id)));
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -22,6 +25,6 @@ export async function GET(request: Request) {
     }
   }
 
-  const blogs = await sql`SELECT * FROM Blogs;`;
+  const blogs = await db.select().from(blogTable);
   return NextResponse.json({ blogs }, { status: 200 });
 }
