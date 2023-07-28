@@ -1,4 +1,6 @@
 import { sql } from "@vercel/postgres";
+import { db } from "@/lib/schema";
+import { BlogTable } from "@/lib/schema";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -10,11 +12,13 @@ export async function GET(request: Request) {
   try {
     if (!author || !title || !content)
       throw new Error("title, author, and content required");
-    await sql`INSERT INTO Blogs (Title, Author, Content) VALUES (${title}, ${author}, ${content});`;
+    await db
+      .insert(BlogTable)
+      .values({ author: author, title: title, content: content });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
 
-  const blogs = await sql`SELECT * FROM Blogs;`;
+  const blogs = await db.select().from(BlogTable);
   return NextResponse.json({ blogs }, { status: 200 });
 }
