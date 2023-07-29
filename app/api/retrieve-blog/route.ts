@@ -1,6 +1,6 @@
 import { db } from "@/lib/schema";
 import { blogTable } from "@/lib/schema";
-import { eq, notExists } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
