@@ -1,3 +1,5 @@
+"use client";
+
 interface BlogHeaderProps {
   author: string;
   title: string;
@@ -6,7 +8,7 @@ interface BlogHeaderProps {
 
 function BlogHeader({ author, title, likes }: BlogHeaderProps) {
   return (
-    <div className="flex justify-between items-center font-quicksand p-3">
+    <div className="flex justify-between items-center font-quicksand p-4">
       <div className="flex flex-col">
         <div className="text-black text-2xl font-bold mb-2">{title}</div>
         <div className="text-black">

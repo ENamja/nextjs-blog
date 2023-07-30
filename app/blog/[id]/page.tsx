@@ -1,21 +1,13 @@
-import BlogHeader from "./BlogHeader";
-import BlogBody from "./BlogBody";
+"use client";
 
-async function getData(id: string) {
-  const res = await fetch(`http://localhost:3000/api/retrieve-blog?id=${id}`);
-  return res.json();
-}
+import React from "react";
+import { useState } from "react";
+import Blog from "./Blog";
 
-async function BlogPage({ params }: { params: { id: string } }) {
-  const blogData = await getData(params.id);
-  const { author, title, content, likes } = blogData.selectedBlog[0];
+function BlogPage({ params }: { params: { id: string } }) {
+  const [aToZ, setAToZ] = useState(true);
 
-  return (
-    <div className="max-w-3xl w-full flex flex-col">
-      <BlogHeader author={author} title={title} likes={likes}></BlogHeader>
-      <BlogBody content={content}></BlogBody>
-    </div>
-  );
+  return <Blog id={params.id}></Blog>;
 }
 
 export default BlogPage;

@@ -4,8 +4,8 @@ import NavBarLink from "./NavBarLink";
 
 function NavBar() {
   return (
-    <div className="flex justify-center max-w-2xl mx-auto p-5 items-center">
-      <h1 className="font-quicksand font-bold text-[#f1356d] text-2xl mr-32">
+    <div className="flex justify-center p-4 items-center">
+      <h1 className="font-quicksand font-bold text-[#f1356d] text-2xl mr-auto">
         BlogSite
       </h1>
       <div>
