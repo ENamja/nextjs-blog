@@ -1,26 +1,30 @@
 "use client";
 
 import { Button } from "@material-tailwind/react";
+import Link from "next/link";
 
 interface BlogProps {
   title: string;
   author: string;
+  id: string;
 }
 
-function Blog({ title, author }: BlogProps) {
+function Blog({ title, author, id }: BlogProps) {
   return (
-    <Button
-      variant="text"
-      color="white"
-      className="flex flex-col px-8 py-4 my-4 mx-4 text-left hover:shadow-lg"
-    >
-      <span className="text-[#f1356d] font-quicksand font-bold text-lg">
-        {title}
-      </span>
-      <span className="text-black font-quicksand font-light">
-        Written by: {author}
-      </span>
-    </Button>
+    <Link className="" href={`/blog/${id}`}>
+      <Button
+        variant="text"
+        color="white"
+        className="flex flex-col w-full my-4 text-left hover:shadow-lg"
+      >
+        <span className="text-[#f1356d] font-quicksand font-bold text-lg">
+          {title}
+        </span>
+        <span className="text-black font-quicksand font-light">
+          Written by: {author}
+        </span>
+      </Button>
+    </Link>
   );
 }
 

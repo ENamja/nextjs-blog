@@ -25,6 +25,7 @@ function Blogs({ blogs, aToZ }: BlogsProps) {
         return (
           <Blog
             key={String(blogs[i].id)}
+            id={String(blogs[i].id)}
             title={String(blogs[i].title)}
             author={String(blogs[i].author)}
           ></Blog>
