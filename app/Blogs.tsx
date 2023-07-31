@@ -7,8 +7,6 @@ interface BlogsProps {
 }
 
 function Blogs({ blogs, aToZ }: BlogsProps) {
-  console.log("blogs length: " + blogs.length);
-
   blogs.sort((a: BlogData, b: BlogData) => {
     let aTitle = a.title;
     let bTitle = b.title;
