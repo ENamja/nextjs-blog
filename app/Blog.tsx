@@ -7,21 +7,25 @@ interface BlogProps {
   title: string;
   author: string;
   id: string;
+  content: string;
 }
 
-function Blog({ title, author, id }: BlogProps) {
+function Blog({ title, author, id, content }: BlogProps) {
   return (
-    <Link className="" href={`/blog/${id}`}>
+    <Link href={`/blog/${id}`}>
       <Button
         variant="text"
         color="white"
-        className="flex flex-col w-full my-4 text-left hover:shadow-lg"
+        className="flex flex-col my-4 w-full text-left hover:shadow-lg"
       >
         <span className="text-[#f1356d] font-quicksand font-bold text-lg">
           {title}
         </span>
         <span className="text-black font-quicksand font-light">
-          Written by: {author}
+          Written by: <span className="text-[#f1356d]">{author}</span>
+        </span>
+        <span className="max-h-8 pt-4 text-gray-500 font-quicksand font-semibold overflow-hidden">
+          {content}
         </span>
       </Button>
     </Link>

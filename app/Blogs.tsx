@@ -28,6 +28,7 @@ function Blogs({ blogs, aToZ }: BlogsProps) {
             id={String(blogs[i].id)}
             title={String(blogs[i].title)}
             author={String(blogs[i].author)}
+            content={String(blogs[i].content)}
           ></Blog>
         );
       })}

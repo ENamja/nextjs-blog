@@ -15,7 +15,7 @@ function BlogHeader({ author, title, likes }: BlogHeaderProps) {
           Written by: <span className="text-[#f1356d]">{author}</span>
         </div>
       </div>
-      <div className="text-lg font-medium">
+      <div className="text-lg font-light">
         <span>{likes}</span> Likes ❤️
       </div>
     </div>
