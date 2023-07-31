@@ -14,7 +14,7 @@ function OrderButton({ aToZ, setAToZ }: OrderButtonProps) {
       className="font-quicksand"
       variant="text"
       color="gray"
-      ripple={true}
+      ripple={false}
       onClick={() => {
         setAToZ(!aToZ);
       }}
