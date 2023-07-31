@@ -1,5 +1,6 @@
 import BlogHeader from "./BlogHeader";
 import BlogBody from "./BlogBody";
+import DeleteBlog from "./DeleteBlog";
 import { getBlog } from "@/lib/api";
 
 async function Blog({ id }: { id: string }) {
@@ -10,6 +11,7 @@ async function Blog({ id }: { id: string }) {
     <div className="max-w-3xl w-full">
       <BlogHeader author={author} title={title} likes={likes}></BlogHeader>
       <BlogBody content={content}></BlogBody>
+      <DeleteBlog id={id}></DeleteBlog>
     </div>
   );
 }

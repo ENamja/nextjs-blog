@@ -24,7 +24,5 @@ export async function GET(request: Request) {
       );
     }
   }
-
-  const blogs = await db.select().from(blogTable);
-  return NextResponse.json({ blogs }, { status: 200 });
+  return NextResponse.redirect(`http://localhost:3000`);
 }

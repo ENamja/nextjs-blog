@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@material-tailwind/react";
+
 interface BlogHeaderProps {
   author: string;
   title: string;
@@ -15,8 +17,13 @@ function BlogHeader({ author, title, likes }: BlogHeaderProps) {
           Written by: <span className="text-[#f1356d]">{author}</span>
         </div>
       </div>
-      <div className="text-lg font-light">
-        <span>{likes}</span> Likes ❤️
+      <div>
+        <div className="mb-2 text-lg font-light">
+          <span>{likes}</span> Likes ❤️
+        </div>
+        <Button variant="text" color="gray" size="sm">
+          Like 👍
+        </Button>
       </div>
     </div>
   );
