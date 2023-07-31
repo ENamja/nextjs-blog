@@ -1,5 +1,6 @@
 import { db } from "@/lib/schema";
 import { blogTable } from "@/lib/schema";
+import { redirect } from "next/dist/server/api-utils";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -11,9 +12,13 @@ export async function GET(request: Request) {
   try {
     if (!author || !title || !content)
       throw new Error("title, author, and content required");
-    await db
+    const insertedBlog = await db
       .insert(blogTable)
-      .values({ author: author, title: title, content: content });
+      .values({ author: author, title: title, content: content })
+      .returning();
+    return NextResponse.redirect(
+      `http://localhost:3000/blog/${insertedBlog[0].id}`
+    );
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -24,7 +29,4 @@ export async function GET(request: Request) {
       );
     }
   }
-
-  const blogs = await db.select().from(blogTable);
-  return NextResponse.json({ blogs }, { status: 200 });
 }
