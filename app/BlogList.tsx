@@ -3,8 +3,9 @@
 import Blogs from "./Blogs";
 import OrderButton from "./OrderButton";
 import { useState } from "react";
+import { BlogData } from "@/lib/schema";
 
-function BlogList() {
+function BlogList(blogs: { blogs: Array<BlogData> }) {
   const [aToZ, setAToZ] = useState(true);
 
   return (
@@ -13,7 +14,7 @@ function BlogList() {
         <h1 className="font-quicksand font-bold text-xl">Blogs:</h1>
         <OrderButton aToZ={aToZ} setAToZ={setAToZ}></OrderButton>
       </div>
-      <Blogs aToZ={aToZ}></Blogs>
+      <Blogs blogs={blogs.blogs} aToZ={aToZ}></Blogs>
     </div>
   );
 }

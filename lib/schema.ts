@@ -1,6 +1,11 @@
 import { drizzle } from "drizzle-orm/vercel-postgres";
 import { sql } from "@vercel/postgres";
 import {
+  PgSerial,
+  PgSmallInt,
+  PgText,
+  PgTimestamp,
+  PgVarchar,
   pgTable,
   serial,
   smallint,
@@ -8,6 +13,15 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
+
+export interface BlogData {
+  id: PgSerial<any>;
+  author: PgVarchar<any>;
+  title: PgVarchar<any>;
+  content: PgText<any>;
+  likes: PgSmallInt<any>;
+  createdAt: PgTimestamp<any>;
+}
 
 // Use drizzle to send sql queries to the DB
 export const db = drizzle(sql);

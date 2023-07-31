@@ -1,25 +1,13 @@
-"use client";
-
 import Blog from "./Blog";
+import { BlogData } from "@/lib/schema";
 
-const _CONTENT =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-const _AUTHORS = ["a", "b", "c", "d", "e", "f"];
-const _TITLES = [
-  "a title",
-  "b title",
-  "c title",
-  "d title",
-  "e title",
-  "f title",
-];
+interface BlogsProps {
+  blogs: Array<BlogData>;
+  aToZ: boolean;
+}
 
-function Blogs({ aToZ }: { aToZ: boolean }) {
-  const _BLOGS = Array.from({ length: _AUTHORS.length }).map((_, i) => {
-    return { title: _TITLES[i], author: _AUTHORS[i], content: _CONTENT };
-  });
-
-  _BLOGS.sort((a, b) => {
+function Blogs({ blogs, aToZ }: BlogsProps) {
+  blogs.sort((a: BlogData, b: BlogData) => {
     let aTitle = a.title;
     let bTitle = b.title;
 
@@ -33,12 +21,12 @@ function Blogs({ aToZ }: { aToZ: boolean }) {
 
   return (
     <div className="flex flex-col">
-      {Array.from({ length: _BLOGS.length }).map((_, i) => {
+      {Array.from({ length: blogs.length }).map((_, i) => {
         return (
           <Blog
-            key={_BLOGS[i].title}
-            title={_BLOGS[i].title}
-            author={_BLOGS[i].author}
+            key={String(blogs[i].title)}
+            title={String(blogs[i].title)}
+            author={String(blogs[i].author)}
           ></Blog>
         );
       })}

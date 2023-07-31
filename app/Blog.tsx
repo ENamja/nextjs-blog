@@ -1,6 +1,5 @@
-import { db } from "@/lib/schema";
-import { blogTable } from "@/lib/schema";
-import { NextResponse } from "next/server";
+"use client";
+
 import { Button } from "@material-tailwind/react";
 
 interface BlogProps {
