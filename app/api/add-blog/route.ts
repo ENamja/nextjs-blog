@@ -1,6 +1,5 @@
 import { db } from "@/lib/schema";
 import { blogTable } from "@/lib/schema";
-import { redirect } from "next/dist/server/api-utils";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -8,6 +7,7 @@ export async function GET(request: Request) {
   const author = searchParams.get("author");
   const title = searchParams.get("title");
   const content = searchParams.get("content");
+  const host = request.headers.get("host");
 
   try {
     if (!author || !title || !content)
@@ -16,9 +16,7 @@ export async function GET(request: Request) {
       .insert(blogTable)
       .values({ author: author, title: title, content: content })
       .returning();
-    return NextResponse.redirect(
-      `http://localhost:3000/blog/${insertedBlog[0].id}`
-    );
+    return NextResponse.redirect(`http://${host}/blog/${insertedBlog[0].id}`);
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 400 });

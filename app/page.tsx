@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogList from "./BlogList";
 import { getBlogs } from "@/lib/api";
+import { headers } from "next/headers";
 
 async function allBlogs() {
-  const blogs = await getBlogs();
+  const headersList = headers();
+  const host = headersList.get("host");
+  const blogs = await getBlogs(host);
   return blogs.allBlogs;
 }
 

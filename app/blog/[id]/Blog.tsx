@@ -2,9 +2,12 @@ import BlogHeader from "./BlogHeader";
 import BlogBody from "./BlogBody";
 import DeleteBlog from "./DeleteBlog";
 import { getBlog } from "@/lib/api";
+import { headers } from "next/headers";
 
 async function Blog({ id }: { id: string }) {
-  const blogData = await getBlog(id);
+  const headersList = headers();
+  const host = headersList.get("host");
+  const blogData = await getBlog({ host, id });
   const { author, title, content, likes } = blogData.selectedBlog[0];
 
   return (

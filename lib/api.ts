@@ -1,12 +1,15 @@
-const _DOMAIN = "http://localhost:3000";
+interface getBlogProps {
+  host: string | URL | null;
+  id: string;
+}
 
-export async function getBlog(id: string) {
-  const res = await fetch(`${_DOMAIN}/api/retrieve-blog?id=${id}`);
+export async function getBlog({ host, id }: getBlogProps) {
+  const res = await fetch(`http://${host}/api/retrieve-blog?id=${id}`);
   return res.json();
 }
 
-export async function getBlogs() {
-  const res = await fetch(`${_DOMAIN}/api/retrieve-blogs`, {
+export async function getBlogs(host: string | URL | null) {
+  const res = await fetch(`http://${host}/api/retrieve-blogs`, {
     cache: "no-store",
   });
   return res.json();

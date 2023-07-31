@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
+  const host = request.headers.get("host");
 
   try {
     if (!id) {
@@ -24,5 +25,5 @@ export async function GET(request: Request) {
       );
     }
   }
-  return NextResponse.redirect(`http://localhost:3000`);
+  return NextResponse.redirect(`http://${host}`);
 }
