@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 
 async function Page() {
   const _BLOGS = await allBlogs();
+  console.log(_BLOGS.length);
   return <BlogList blogs={_BLOGS}></BlogList>;
 }
 
