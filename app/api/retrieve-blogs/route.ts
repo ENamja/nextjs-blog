@@ -1,11 +1,12 @@
 import { db, blogTable } from "@/lib/schema";
-import { revalidateTag } from "next/cache";
-import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
     const allBlogs = await db.select().from(blogTable);
-    revalidateTag("blogs");
+    const path = request.nextUrl.searchParams.get("path") || "/";
+    revalidatePath(path);
     return NextResponse.json({ allBlogs }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
