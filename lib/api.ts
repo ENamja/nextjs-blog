@@ -9,8 +9,6 @@ export async function getBlog({ host, id }: getBlogProps) {
 }
 
 export async function getBlogs(host: string | URL | null) {
-  const res = await fetch(`http://${host}/api/retrieve-blogs`, {
-    next: { tags: ["blogs"] },
-  });
+  const res = await fetch(`http://${host}/api/retrieve-blogs`);
   return res.json();
 }
